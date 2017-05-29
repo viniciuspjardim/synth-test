@@ -4,16 +4,17 @@ Email: viniciuspjardim@gmail.com
 Date: 3/2016
 """
 
-import numpy as np
 import math
-import pyaudio as pa
-import wave
 import random
-from scipy.io.wavfile import write
-from scipy import signal
-import matplotlib.pyplot as plt
 import re
-from musics import *
+import wave
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pyaudio as pa
+from scipy.io.wavfile import write
+
+from src.musics import *
 
 
 class Notes:

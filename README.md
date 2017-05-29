@@ -29,7 +29,7 @@ Each note in this class can be represented as a number or by the
 note name followed by the octave number. Example:
 
 | Note | Name | Frequency (Hz) | Wavelength (m)|
-|:----:|------|---------------:|--------------:|
+|:----:|:----:|---------------:|--------------:|
 |    0 |   C0 |      16.351597 |     21.098855 |
 |    1 |  C#0 |      17.323914 |     19.914667 |
 |    2 |   D0 |      18.354047 |     18.796943 |
@@ -60,7 +60,7 @@ On Linux:
 pip install pyaudio
 ```
 
-More pyaudio install instructions at:
+More pyaudio installation instructions at:
 http://people.csail.mit.edu/hubert/pyaudio/
 
 ### License
