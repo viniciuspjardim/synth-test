@@ -19,9 +19,10 @@ from src.musics import *
 
 class Notes:
     """Musical notes represents sounds with definite pitches (sound
-    frequency). Definite pitches came from instruments like piano,
-    guitar, vocals, etc. Notes often came from the chromatic scale, with
-    12 pitches, each a semitone above or below another. The notes are:
+    frequency). Definite pitches come from instruments like piano,
+    guitar, vocals, etc. Notes often come from the chromatic scale,
+    with 12 pitches, each a semitone above or below another. The notes
+    are:
 
     `C, C#, D, D#, E, F, F#, G, G#, A, A#, B`
 
@@ -456,7 +457,7 @@ def main():
 
     notes = Notes()
 
-    # This notes came from the file musics.py that contain notes samples
+    # This notes come from the file musics.py that contain notes samples
     music_notes = smoke_on_the_water
 
     music = Music(notes, music_notes, bpm=112, tone_shift=44)

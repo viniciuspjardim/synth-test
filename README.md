@@ -10,9 +10,10 @@ GUI, generate scales and notes frequencies tables.
 ### Music info
 
 Musical notes represents sounds with definite pitches (sound
-frequency). Definite pitches came from instruments like piano,
-guitar, vocals, etc. Notes often came from the chromatic scale, with
-12 pitches, each a semitone above or below another. The notes are:
+frequency). Definite pitches come from instruments like piano,
+guitar, vocals, etc. Notes often come from the chromatic scale,
+with 12 pitches, each a semitone above or below another. The notes
+are:
 
 `C, C#, D, D#, E, F, F#, G, G#, A, A#, B`
 
@@ -46,7 +47,7 @@ frequencies from 20 to 20000 Hz.
 ### Installing and running
 
 Anaconda distribution has all packages needed except pyaudio. I used
-Anaconda3 (witch came with python 3 interpreter).
+Anaconda3 (which comes with python 3 interpreter).
 
 Anaconda download: https://www.continuum.io/downloads
 
@@ -67,4 +68,5 @@ http://people.csail.mit.edu/hubert/pyaudio/
 Synth Test is licensed under the
 [Apache 2 License](http://www.apache.org/licenses/LICENSE-2.0.html),
 meaning you can use it free of charge, without strings attached in
-commercial and non-commercial projects.
+commercial and non-commercial projects. I would like to get
+(non-mandatory) credit in case you use this code in your project.
