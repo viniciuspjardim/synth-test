@@ -17,7 +17,7 @@ are:
 
 `C, C#, D, D#, E, F, F#, G, G#, A, A#, B`
 
-In this class each of this notes are represented by a number from 0
+In this class each of this notes is represented by a number from 0
 (C note) to 11 (B note). This 12 notes represents an octave. Each
 octave ends in a B note, then a new octave starts (C note).
 

@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pyaudio as pa
 from scipy.io.wavfile import write
-
+from scipy import signal
 from src.musics import *
 
 
@@ -26,7 +26,7 @@ class Notes:
 
     `C, C#, D, D#, E, F, F#, G, G#, A, A#, B`
 
-    In this class each of this notes are represented by a number from 0
+    In this class each of this notes is represented by a number from 0
     (C note) to 11 (B note). This 12 notes represents an octave. Each
     octave ends in a B note, then a new octave starts (C note).
 
@@ -298,7 +298,7 @@ class WavFile:
 
         self.duration = duration
         self.samplesPerSecond = 44100
-        self.samples = self.duration * self.samplesPerSecond
+        self.samples = int(self.duration * self.samplesPerSecond)
         self.data = np.ones(self.samples)
         self.scaled = None
         self.it = np.nditer(self.data, flags=['f_index'],
@@ -350,10 +350,16 @@ class WavFile:
 
 class Music:
 
-    def __init__(self, notes, music, def_time=4, bpm=120, tone_shift=0):
+    SIN = 1
+    SQUARE = 2
+    SAWTOOTH = 3
+
+    def __init__(self, notes, music, def_time=4, bpm=120, tone_shift=0,
+                 waveform=SIN):
 
         self.notes = notes
         self.music = music
+        self.waveform = waveform
         self.fileName = None
 
         self.bpm = bpm
@@ -407,16 +413,20 @@ class Music:
 
             volume = Notes.volume(tone_time, max_tone_time, 3)
 
-            par = self.wav.it.index * 2 * math.pi /\
-                  self.wav.samplesPerSecond
+            par = self.wav.it.index * 2 * np.pi / \
+                self.wav.samplesPerSecond
 
-            x[...] = math.sin(par * self.notes.frequency(tone)) * volume
+            if self.waveform == Music.SIN:
+                x[...] = math.sin(
+                    par * self.notes.frequency(tone)) * volume
 
-            # x[...] = signal.square(par * self.notes.frequency(tone))\
-            #          * volume
+            elif self.waveform == Music.SQUARE:
+                x[...] = signal.square(
+                    par * self.notes.frequency(tone)) * volume
 
-            # x[...] = signal.sawtooth(
-            #          par * self.notes.frequency(tone), 0) * volume
+            elif self.waveform == Music.SAWTOOTH:
+                x[...] = signal.sawtooth(
+                    par * self.notes.frequency(tone)) * volume
 
             # If the tone time has ended go to the next tone
             if tone_time >= max_tone_time and i < len(self.music) - 1:
@@ -445,7 +455,7 @@ class Music:
         for i in range(60):
             note = random.choice(scale)
             note = note + (12 * random.choice(octaves))\
-                   if note is not None else None
+                if note is not None else None
 
             time = random.choice(times)
             music.append([note, time])
